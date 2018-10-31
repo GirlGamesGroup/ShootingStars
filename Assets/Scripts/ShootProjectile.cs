@@ -6,13 +6,13 @@ public class ShootProjectile : MonoBehaviour {
 
     public Rigidbody2D projectile;
 
-    void Start () {
-        Shoot(10.0f, 45.0f);
+    void Start() {
+        Shoot(2.0f, 25.0f);
     }
 
     public void Shoot(float velocity, float angle)
     {
-        var shootedProjectile = Instantiate(projectile, projectile.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+        var shootedProjectile = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody2D>();
         var shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
         shootedProjectile.velocity = shootDir * velocity;
     }
