@@ -22,6 +22,7 @@ public class BalloonAreaCollision : MonoBehaviour {
     {
         if (sprite.enabled)
         {
+            //Change color of stars
             starsDetected = Physics2D.OverlapCircleAll(transform.position, collisionRadius);
             for (int i = 0; i < starsDetected.Length; i++)
             {
@@ -30,18 +31,37 @@ public class BalloonAreaCollision : MonoBehaviour {
                 {
                     rainbowColorID = Random.Range(0, GameManager.Instance.rainbowColor.Length);
                     star.ChangeColor(GameManager.Instance.rainbowColor[rainbowColorID]);
+                    GameManager.Instance.numStarsCompleted++;
                 }
             }
 
-            starsDetected = null;
-            star = null;
-            //sprite.enabled = false;
-            
+            //Detect if you won
+            if(GameManager.Instance.numStarsCompleted >= GameManager.Instance.levels[GameManager.Instance.currentLevel].numStarts)
+            {
+                GameManager.Instance.canDoStuff = false;
+                LevelManager.Instance.DoCrazyStarAnimation();
+            }
+            else
+            {
+                starsDetected = null;
+                star = null;
+                Debug.Log("Desactive Balloon");
+                sprite.enabled = false;
+                BalloonManager.Instance.AddObject(gameObject);
+
+                if (GameManager.Instance.currentNumBalloons > 0)
+                {
+                    Debug.Log("Get New Balloon");
+                    BalloonManager.Instance.GetBalloon();
+                    GameManager.Instance.currentNumBalloons--;
+                }
+                else
+                {
+                    Debug.Log("YOU DONT HAVE MORE BALLOONS");
+
+                }
+            }
+
         }
-    }
-
-    public void ResetBalloon()
-    {
-
     }
 }
