@@ -16,13 +16,9 @@ public class BalloonManager : MonoBehaviour
     {
         if (GameManager.Instance.canDoStuff)
         {
-            temp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            temp.z = 0;
-            currentBalloon.transform.position = temp;
-
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                currentBalloon.GetCollision();
+                currentBalloon.Shoot(2.0f, 105.0f);
             }
         }
     }
