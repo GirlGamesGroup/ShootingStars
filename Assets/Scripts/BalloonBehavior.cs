@@ -56,14 +56,13 @@ public class BalloonBehavior : MonoBehaviour {
         {
             if (collision.tag == "Star")
             {
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = 0;
-                rb.drag = 0;
+                StopForce();
                 isVisible = false;
                 GetCollision();
             }
             else if(collision.tag == "Finish")
             {
+                StopForce();
                 isVisible = false;
                 anim.Play("Explode");
                 DetectIfYouWon();
@@ -98,7 +97,7 @@ public class BalloonBehavior : MonoBehaviour {
         if (GameManager.Instance.numStarsCompleted >= GameManager.Instance.levels[GameManager.Instance.currentLevel].numStarts)
         {
             GameManager.Instance.isTransitioningToNextLevel = true;
-            LevelManager.Instance.DoCrazyStarAnimation();
+            StarManager.Instance.DoCrazyStarAnimation();
         }
         else
         {
@@ -106,10 +105,15 @@ public class BalloonBehavior : MonoBehaviour {
             star = null;
         }
     }
+    private void StopForce()
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0;
+        rb.drag = 0;
+    }
 
     public void ResetBalloon()
     {
-       
         transform.position = BalloonManager.Instance.transform.position;
         anim.Play("Idle");
         isVisible = true;

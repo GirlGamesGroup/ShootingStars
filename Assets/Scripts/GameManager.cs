@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour {
     {
         currentLevel+=1;
         ResetLevel();
-        SceneManager.LoadScene("Level-"+ (currentLevel +1));
     }
 
     private void ResetLevel()

@@ -30,9 +30,9 @@ public class StarsBehavior : MonoBehaviour {
 
     IEnumerator GoToPlayer()
     {
-        while (transform.position.y >= BalloonManager.Instance.transform.position.y -0.05f )
+        while (transform.position.y >= LevelManager.Instance.transform.position.y -0.05f )
         {
-            transform.position = Vector3.Lerp(transform.position, BalloonManager.Instance.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, LevelManager.Instance.transform.position, speed * Time.deltaTime);
             speed += 0.25f;
             yield return null;
         }

@@ -28,6 +28,7 @@ public class BalloonManager : MonoBehaviour
                 else
                 {
                     Debug.Log("YOU DONT HAVE MORE BALLOONS");
+                    Destroy(gameObject);
 
                 }
             }
@@ -62,6 +63,7 @@ public class BalloonManager : MonoBehaviour
         for (int i = 0; i < size; i++)
         {
             GameObject obj = (GameObject)Instantiate(prefab);
+            obj.transform.position = transform.position;
             obj.transform.parent = transform;
             list.Add(obj);
         }

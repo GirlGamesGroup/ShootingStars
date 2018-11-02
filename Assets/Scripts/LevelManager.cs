@@ -5,45 +5,15 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour {
 
     public static LevelManager Instance;
-    private StarsBehavior[] stars;
-    private bool isLevelCompleted = false;
-    
-	void OnEnable ()
+  
+    private void Awake()
     {
         Instance = this;
-        stars = transform.GetComponentsInChildren<StarsBehavior>();
-	}
-
-    public void DoCrazyStarAnimation()
-    {
-        StartCoroutine(CombineStars());
     }
 
-    IEnumerator CombineStars()
+    public void GoToNextLevel()
     {
-        for (int i = 0; i < stars.Length; i++)
-        {
-            stars[i].CombineStars();
-            yield return new WaitForSeconds(0.2f);
-        }
-        StartCoroutine("GoToNextLevel");
-    }
-
-    IEnumerator GoToNextLevel()
-    {
-        while(!isLevelCompleted)
-        {
-            for (int i = 0; i < stars.Length; i++)
-            {
-                if (!stars[i].isFinished)
-                {
-                    yield return null;
-                }
-            }
-            isLevelCompleted = true;
-        }
-        yield return new WaitForSeconds(0.2f);
+        Debug.Log("Go to next Level Animation (change background)");
         GameManager.Instance.GoToNextLevel();
     }
-
 }
