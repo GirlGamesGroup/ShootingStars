@@ -4,17 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/ShootingStars.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: cbf1734aefeb11240806b721320e3934
-  - enabled: 1
-    path: Assets/Scenes/Level.unity
-    guid: 6c11cffc3e1f4e641ade72de63a0c672
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/01ccc692742fadc41a764e0f089ffa1c
-    guid: 01ccc692742fadc41a764e0f089ffa1c
-  m_configObjects: {}
+  m_Scenes: []
