@@ -40,11 +40,10 @@ public class LevelManager : MonoBehaviour {
                     yield return null;
                 }
             }
-            Debug.Log("tiii");
             isLevelCompleted = true;
         }
         yield return new WaitForSeconds(0.2f);
-        //GameManager.Instance.GoToNextLevel();
+        GameManager.Instance.GoToNextLevel();
     }
 
 }

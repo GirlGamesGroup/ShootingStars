@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58952801950424990}
   m_Layer: 0
   m_Name: Star
-  m_TagString: Untagged
+  m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,9 +35,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1681736206831804}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 3.75, z: 0}
-  m_LocalScale: {x: 0.711, y: 0.711, z: 0.711}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.168991, y: 5.496002, z: 0}
+  m_LocalScale: {x: 0.183438, y: 0.183438, z: 0.183438}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de3855a8dc03ea408fb094b9a4f6de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFinished: 0
 --- !u!212 &212870113041486112
 SpriteRenderer:
   m_ObjectHideFlags: 1

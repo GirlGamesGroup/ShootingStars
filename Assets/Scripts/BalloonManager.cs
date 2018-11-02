@@ -5,7 +5,7 @@ using UnityEngine;
 public class BalloonManager : MonoBehaviour
 {
     public static BalloonManager Instance;
-    public BalloonAreaCollision currentBalloon;
+    public BalloonBehavior currentBalloon;
 
     private List<GameObject> list;
     [SerializeField] private GameObject prefab;
@@ -14,11 +14,22 @@ public class BalloonManager : MonoBehaviour
     private Vector3 temp;
     void Update()
     {
-        if (GameManager.Instance.canDoStuff)
+        if (!GameManager.Instance.isTransitioningToNextLevel)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                currentBalloon.Shoot(2.0f, 105.0f);
+                if (GameManager.Instance.currentNumBalloons > 0)
+                { 
+                    GameManager.Instance.currentNumBalloons--;
+                    currentBalloon.Shoot(2.0f, 105.0f);
+                    GetBalloon();
+
+                }
+                else
+                {
+                    Debug.Log("YOU DONT HAVE MORE BALLOONS");
+
+                }
             }
         }
     }
@@ -42,7 +53,7 @@ public class BalloonManager : MonoBehaviour
 
     public void GetBalloon()
     {
-        currentBalloon = GetObject().GetComponent<BalloonAreaCollision>();
+        currentBalloon = GetObject().GetComponent<BalloonBehavior>();
     }
 
     #region PoolSystem

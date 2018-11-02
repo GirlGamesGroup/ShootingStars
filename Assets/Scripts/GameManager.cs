@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance;
 
     [Header("Game Data")]
-    public bool canDoStuff = true;
+    public bool isTransitioningToNextLevel = false;
     public int score = 0;
     public int currentNumBalloons = 10;
     public int currentLevel = -1;
@@ -46,22 +46,22 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame(string goToGameScene)
     {
+        ResetLevel();
         SceneManager.LoadScene(goToGameScene);
     }
 
     public void GoToNextLevel()
     {
-        currentLevel++;
+        currentLevel+=1;
         ResetLevel();
-        SceneManager.LoadScene("Level-"+ currentLevel);
+        SceneManager.LoadScene("Level-"+ (currentLevel +1));
     }
 
     private void ResetLevel()
     {
         currentNumBalloons = levels[currentLevel].numBalloon;
         numStarsCompleted = 0;
-        canDoStuff = true;
-
+        isTransitioningToNextLevel = false;
     }
 
     public void ResetGame(string goToMenuScene)
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour {
         currentLevel = 0;
         currentNumBalloons = levels[currentLevel].numBalloon;
         score = 0;
-        canDoStuff = true;
+        isTransitioningToNextLevel = false;
         SceneManager.LoadScene(goToMenuScene);
     }
 
