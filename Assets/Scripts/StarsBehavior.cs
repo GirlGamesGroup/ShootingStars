@@ -20,6 +20,7 @@ public class StarsBehavior : MonoBehaviour {
     public void ChangeColor(Color color)
     {
         sprite.color = color;
+        anim.Play("HappyIdle");
         coll.enabled = false;
     }
 
