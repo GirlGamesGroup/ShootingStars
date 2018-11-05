@@ -19,7 +19,7 @@ public class BalloonManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //Shoot();
+                Shoot(100,90);
                 
             }
         }
@@ -29,17 +29,20 @@ public class BalloonManager : MonoBehaviour
 
     public void Shoot(float acceleration, float angle)
     {
-        if (GameManager.Instance.currentNumBalloons > 0)
+        if (!GameManager.Instance.isTransitioningToNextLevel)
         {
-            GameManager.Instance.currentNumBalloons--;
-            currentBalloon.Shoot(acceleration, angle);
-            GetBalloon();
-        }
-        else
-        {
-            Debug.Log("YOU DONT HAVE MORE BALLOONS");
-            Destroy(gameObject);
+            if (GameManager.Instance.currentNumBalloons > 0)
+            {
+                GameManager.Instance.currentNumBalloons--;
+                currentBalloon.Shoot(acceleration, angle);
+                GetBalloon();
+            }
+            else
+            {
+                Debug.Log("YOU DONT HAVE MORE BALLOONS");
+                Destroy(gameObject);
 
+            }
         }
     }
 
@@ -52,7 +55,7 @@ public class BalloonManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             CreatePoolObjects(GameManager.Instance.currentNumBalloons);
             GetBalloon();
-            InputManager.Instance.SendProjectileInfo();
+            if(InputManager.Instance != null)InputManager.Instance.SendProjectileInfo();
         }
         else
         {
@@ -63,6 +66,7 @@ public class BalloonManager : MonoBehaviour
     public void GetBalloon()
     {
         currentBalloon = GetObject().GetComponent<BalloonBehavior>();
+        currentBalloon.isVisible = true;
     }
 
     #region PoolSystem

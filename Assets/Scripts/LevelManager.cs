@@ -6,11 +6,7 @@ public class LevelManager : MonoBehaviour {
 
     public static LevelManager Instance;
 
-    public StarManager level1;
-    public StarManager level2;
-    public StarManager level3;
-    public StarManager level4;
-    public StarManager level5;
+    public StarManager[] level;
 
     private void Awake()
     {
@@ -19,8 +15,22 @@ public class LevelManager : MonoBehaviour {
 
     public void GoToNextLevel()
     {
-        Debug.Log("Go to next Level Animation (change background)");
+        if (GameManager.Instance.currentLevel + 1 < level.Length)
+        {
+            Debug.Log("Go to next Level Animation (change background): " + (GameManager.Instance.currentLevel + 1));
+            level[GameManager.Instance.currentLevel+1].gameObject.SetActive(true);
+            GameManager.Instance.GoToNextLevel();
+            Invoke("CanInteractAgain",1.2f);
+        }
+        else
+        {
+            Debug.Log("yOU wON!");
+        }
+    }
 
-        GameManager.Instance.GoToNextLevel();
+    private void CanInteractAgain()
+    {
+        GameManager.Instance.isTransitioningToNextLevel = false;
+
     }
 }

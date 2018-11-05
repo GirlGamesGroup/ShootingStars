@@ -5,14 +5,21 @@ using UnityEngine;
 public class StarManager : MonoBehaviour {
 
     public static StarManager Instance;
+    private Transform children;
     private StarsBehavior[] stars;
     private bool isLevelCompleted = false;
     
 	void OnEnable ()
     {
         Instance = this;
-        stars = transform.GetComponentsInChildren<StarsBehavior>();
+        children = transform.GetChild(0);
+        stars = children.GetComponentsInChildren<StarsBehavior>();
 	}
+
+    public void ShowStars()
+    {
+        children.gameObject.SetActive(true);
+    }
 
     public void DoCrazyStarAnimation()
     {
@@ -21,6 +28,8 @@ public class StarManager : MonoBehaviour {
 
     IEnumerator CombineStars()
     {
+        yield return new WaitForSeconds(0.5f);
+
         for (int i = 0; i < stars.Length; i++)
         {
             stars[i].CombineStars();

@@ -27,7 +27,7 @@ public class BalloonBehavior : MonoBehaviour {
     //Range of velocity between [0|4] from device input
     public void Shoot(float acceleration, float angle)
     {
-        Debug.Log(acceleration + " : " + angle);
+        //Debug.Log(acceleration + " : " + angle);
         var velocity = acceleration;
         var shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
@@ -80,6 +80,7 @@ public class BalloonBehavior : MonoBehaviour {
 
     public void GetCollision()
     {
+        Debug.Log("Explode!");
         anim.Play("Explode");
 
         //Change color of stars
@@ -101,15 +102,18 @@ public class BalloonBehavior : MonoBehaviour {
 
     private void DetectIfYouWon()
     {
-        if (GameManager.Instance.numStarsCompleted >= GameManager.Instance.levels[GameManager.Instance.currentLevel].numStarts)
+        if (!GameManager.Instance.isTransitioningToNextLevel)
         {
-            GameManager.Instance.isTransitioningToNextLevel = true;
-            StarManager.Instance.DoCrazyStarAnimation();
-        }
-        else
-        {
-            starsDetected = null;
-            star = null;
+            if (GameManager.Instance.numStarsCompleted >= GameManager.Instance.levels[GameManager.Instance.currentLevel].numStarts)
+            {
+                GameManager.Instance.isTransitioningToNextLevel = true;
+                StarManager.Instance.DoCrazyStarAnimation();
+            }
+            else
+            {
+                starsDetected = null;
+                star = null;
+            }
         }
     }
     private void StopForce()
@@ -123,7 +127,7 @@ public class BalloonBehavior : MonoBehaviour {
     {
         transform.position = BalloonManager.Instance.transform.position;
         anim.Play("Idle");
-        isVisible = true;
+        isVisible = false;
         BalloonManager.Instance.AddObject(gameObject);
     }
 }

@@ -10,12 +10,20 @@ public class StarsBehavior : MonoBehaviour {
     private Animator anim;
     private float speed = 0.1f;
 
-    private void Start()
+    private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        sprite.color = new Color(sprite.color.r,sprite.color.g,sprite.color.b,0);
         coll = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
+        Invoke("StartAnim",Random.Range(0, 0.5f));
     }
+
+    private void StartAnim()
+    {
+        anim.enabled = true;
+    }
+
 
     public void ChangeColor(Color color)
     {

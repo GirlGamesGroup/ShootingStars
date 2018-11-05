@@ -58,9 +58,8 @@ public class GameManager : MonoBehaviour {
 
     private void ResetLevel()
     {
-        currentNumBalloons = levels[currentLevel].numBalloon;
+        if(currentLevel < levels.Length)currentNumBalloons = levels[currentLevel].numBalloon;
         numStarsCompleted = 0;
-        isTransitioningToNextLevel = false;
     }
 
     public void ResetGame(string goToMenuScene)

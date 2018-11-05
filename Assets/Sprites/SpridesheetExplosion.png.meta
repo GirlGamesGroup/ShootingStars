@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: d653b502bc4e11947ba799b690c9d1d8
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SpridesheetExplosion_0
+    21300002: SpridesheetExplosion_1
+    21300004: SpridesheetExplosion_2
+    21300006: SpridesheetExplosion_3
+    21300008: SpridesheetExplosion_4
+    21300010: SpridesheetExplosion_5
+    21300012: SpridesheetExplosion_6
+    21300014: SpridesheetExplosion_7
+    21300016: SpridesheetExplosion_8
+    21300018: SpridesheetExplosion_9
+    21300020: SpridesheetExplosion_10
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SpridesheetExplosion_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 40
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5089641, y: 0.503622}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetExplosion_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 33
+        width: 40
+        height: 33
+      alignment: 9
+      pivot: {x: 0.38944215, y: 0.5253533}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetExplosion_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 33
+        width: 40
+        height: 33
+      alignment: 9
+      pivot: {x: 0.44023913, y: 0.5253533}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetExplosion_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 33
+        width: 40
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5388447, y: 0.5217314}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetExplosion_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 40
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetExplosion_5
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 2
+        width: 40
+        height: 33
+      alignment: 9
+      pivot: {x: 0.41633472, y: 0.5507064}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetExplosion_6
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 2
+        width: 40
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetExplosion_7
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 2
+        width: 40
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
