@@ -68,7 +68,7 @@ public class InputManager : MonoBehaviour {
         if (anglePhone < 0)
         {
             float dif = (90 + anglePhone);
-            anglePhone = Mathf.Abs(anglePhone) + dif ;
+            anglePhone = 90 + dif;
         }
         //VAHorizontal.Update(accelerationPhone);
         //VAVertical.Update(anglePhone);

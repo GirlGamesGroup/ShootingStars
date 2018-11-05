@@ -28,7 +28,7 @@ public class BalloonBehavior : MonoBehaviour {
     public void Shoot(float acceleration, float angle)
     {
         Debug.Log(acceleration + " : " + angle);
-        var velocity = acceleration * 10f;
+        var velocity = acceleration;
         var shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
         rb.AddForce(shootDir * velocity);
