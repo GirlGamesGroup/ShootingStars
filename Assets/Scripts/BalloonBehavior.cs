@@ -123,7 +123,7 @@ public class BalloonBehavior : MonoBehaviour {
         rb.drag = 0;
     }
 
-    public void ResetBalloon()
+    public void ResetBalloon() //Called in the anim event
     {
         transform.position = BalloonManager.Instance.transform.position;
         anim.Play("Idle");

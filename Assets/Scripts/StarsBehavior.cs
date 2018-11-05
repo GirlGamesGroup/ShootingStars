@@ -5,6 +5,9 @@ using UnityEngine;
 public class StarsBehavior : MonoBehaviour {
 
     public bool isFinished = false;
+
+    [SerializeField] float secondsToWait = 0.5f;
+
     private SpriteRenderer sprite;
     private Collider2D coll;
     private Animator anim;
@@ -16,7 +19,7 @@ public class StarsBehavior : MonoBehaviour {
         sprite.color = new Color(sprite.color.r,sprite.color.g,sprite.color.b,0);
         coll = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
-        Invoke("StartAnim",Random.Range(0, 0.5f));
+        Invoke("StartAnim",Random.Range(0, secondsToWait));
     }
 
     private void StartAnim()

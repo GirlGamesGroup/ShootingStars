@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour {
     private void CanInteractAgain()
     {
         GameManager.Instance.isTransitioningToNextLevel = false;
+        BalloonManager.Instance.currentBalloon.isVisible = true;
 
     }
 }

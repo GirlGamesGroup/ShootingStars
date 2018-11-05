@@ -55,7 +55,7 @@ public class BalloonManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             CreatePoolObjects(GameManager.Instance.currentNumBalloons);
             GetBalloon();
-            if(InputManager.Instance != null)InputManager.Instance.SendProjectileInfo();
+            if(InputManager.Instance != null) InputManager.Instance.SendProjectileInfo();
         }
         else
         {
