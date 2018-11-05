@@ -19,7 +19,7 @@ public class BalloonManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Shoot(100f, 105f);
+                //Shoot(100f, 105f);
                 
             }
         }
