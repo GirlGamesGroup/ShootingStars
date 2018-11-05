@@ -27,13 +27,11 @@ public class BalloonBehavior : MonoBehaviour {
     //Range of velocity between [0|4] from device input
     public void Shoot(float acceleration, float angle)
     {
-        Debug.Log(acceleration + " : " + angle);
+        //Debug.Log(acceleration + " : " + angle);
         Vector3 shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
         rb.AddForce(shootDir * acceleration);
         StartCoroutine(SlowDownVelocity());
-        InputManager.Instance.SendProjectileInfo();
-    }
 
     IEnumerator SlowDownVelocity()
     {
@@ -51,8 +49,6 @@ public class BalloonBehavior : MonoBehaviour {
                 StopForce();
                 isVisible = false;
                 GetCollision();
-                InputManager.Instance.SendProjectileInfo();
-
             }
             else if(collision.tag == "Finish")
             {
@@ -60,7 +56,6 @@ public class BalloonBehavior : MonoBehaviour {
                 isVisible = false;
                 anim.Play("Explode");
                 DetectIfYouWon();
-                InputManager.Instance.SendProjectileInfo();
 
             }
         }
@@ -69,6 +64,7 @@ public class BalloonBehavior : MonoBehaviour {
 
     public void GetCollision()
     {
+        Debug.Log("Explode!");
         anim.Play("Explode");
 
         //Change color of stars
@@ -90,15 +86,24 @@ public class BalloonBehavior : MonoBehaviour {
 
     private void DetectIfYouWon()
     {
-        if (GameManager.Instance.numStarsCompleted >= GameManager.Instance.levels[GameManager.Instance.currentLevel].numStarts)
+        if (!GameManager.Instance.isTransitioningToNextLevel)
         {
-            GameManager.Instance.isTransitioningToNextLevel = true;
-            StarManager.Instance.DoCrazyStarAnimation();
-        }
-        else
-        {
+            if (GameManager.Instance.numStarsCompleted >= GameManager.Instance.levels[GameManager.Instance.currentLevel].numStarts)
+            {
+                GameManager.Instance.isTransitioningToNextLevel = true;
+                StarManager.Instance.DoCrazyStarAnimation();
+            }
+            else
+            {
+                if (GameManager.Instance.currentNumBalloons <= 0)
+                    LevelManager.Instance.Lose();
+                InputManager.Instance.SendProjectileInfo();
+            }
             starsDetected = null;
             star = null;
+
+
+
         }
     }
     private void StopForce()
@@ -108,11 +113,11 @@ public class BalloonBehavior : MonoBehaviour {
         rb.drag = 0;
     }
 
-    public void ResetBalloon()
+    public void ResetBalloon() //Called in the anim event
     {
         transform.position = BalloonManager.Instance.transform.position;
         anim.Play("Idle");
-        isVisible = true;
+        isVisible = false;
         BalloonManager.Instance.AddObject(gameObject);
     }
 }

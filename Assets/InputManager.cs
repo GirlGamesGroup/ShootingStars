@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour {
     void OnGUI()
     {
         playerIp = Network.player.ipAddress;
-        whereTheIpGoes.text = playerIp;
+        if(whereTheIpGoes != null )whereTheIpGoes.text = playerIp;
     }
     private void Awake()
     {

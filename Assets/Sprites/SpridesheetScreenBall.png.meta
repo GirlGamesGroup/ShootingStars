@@ -1,0 +1,381 @@
+fileFormatVersion: 2
+guid: 721683c0734f146209c4d8ccdba5ef2e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SpridesheetScreenBall_0
+    21300002: SpridesheetScreenBall_1
+    21300004: SpridesheetScreenBall_2
+    21300006: SpridesheetScreenBall_3
+    21300008: SpridesheetScreenBall_4
+    21300010: SpridesheetScreenBall_5
+    21300012: SpridesheetScreenBall_6
+    21300014: SpridesheetScreenBall_7
+    21300016: SpridesheetScreenBall_8
+    21300018: SpridesheetScreenBall_9
+    21300020: SpridesheetScreenBall_10
+    21300022: SpridesheetScreenBall_11
+    21300024: SpridesheetScreenBall_12
+    21300026: SpridesheetScreenBall_13
+    21300028: SpridesheetScreenBall_14
+    21300030: SpridesheetScreenBall_15
+    21300032: SpridesheetScreenBall_16
+    21300034: SpridesheetScreenBall_17
+    21300036: SpridesheetScreenBall_18
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 3173
+        width: 681
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_1
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 3173
+        width: 681
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_2
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 3173
+        width: 680
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_3
+      rect:
+        serializedVersion: 2
+        x: 2161
+        y: 3173
+        width: 680
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_4
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 2441
+        width: 681
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_5
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 2444
+        width: 681
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_6
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 2441
+        width: 680
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_7
+      rect:
+        serializedVersion: 2
+        x: 2161
+        y: 2441
+        width: 680
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_8
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1698
+        width: 681
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_9
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 1698
+        width: 681
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_10
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 1698
+        width: 680
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_11
+      rect:
+        serializedVersion: 2
+        x: 2146
+        y: 1703
+        width: 681
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_12
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 955
+        width: 681
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_13
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 952
+        width: 681
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_14
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 949
+        width: 680
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_15
+      rect:
+        serializedVersion: 2
+        x: 2161
+        y: 956
+        width: 680
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_16
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 223
+        width: 681
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_17
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 226
+        width: 681
+        height: 707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpridesheetScreenBall_18
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 217
+        width: 680
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

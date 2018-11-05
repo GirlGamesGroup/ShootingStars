@@ -5,23 +5,36 @@ using UnityEngine;
 public class StarsBehavior : MonoBehaviour {
 
     public bool isFinished = false;
+
+    [SerializeField] float secondsToWait = 0.5f;
+
     private SpriteRenderer sprite;
     private Collider2D coll;
     private Animator anim;
     private float speed = 0.1f;
 
-    private void Start()
+    private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        sprite.color = new Color(sprite.color.r,sprite.color.g,sprite.color.b,0);
         coll = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
+        Invoke("StartAnim",Random.Range(0, secondsToWait));
     }
+
+    private void StartAnim()
+    {
+        anim.enabled = true;
+    }
+
 
     public void ChangeColor(Color color)
     {
         sprite.color = color;
         anim.Play("HappyIdle");
         coll.enabled = false;
+        GameManager.Instance.score += 5;
+        LevelManager.Instance.txt_score.text = "Score: " + GameManager.Instance.score;
     }
 
     public void CombineStars()

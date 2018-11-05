@@ -49,13 +49,24 @@ public class RainbowProjectile : MonoBehaviour {
         SetLineRendererPositions();
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float distance = Vector2.Distance(mousePosition, attachedBody.position);
-        if(distance > maxDragDistance )
+        Vector3 trajectory = mousePosition - attachedBody.position;
+        float anglePhone = Mathf.Rad2Deg * Mathf.Atan(trajectory.y / trajectory.x);
+        if (anglePhone < 0)
         {
-            Vector2 direction = (mousePosition - attachedBody.position).normalized;
-            rb.position = attachedBody.position + direction * maxDragDistance; 
+            float dif = (90 + anglePhone);
+            anglePhone = 90 + dif;
         }
-        else{
-            rb.position = mousePosition;
+        if(anglePhone >= 75 && anglePhone <= 105)
+        {
+            if (distance > maxDragDistance)
+            {
+                Vector2 direction = (mousePosition - attachedBody.position).normalized;
+                rb.position = attachedBody.position + direction * maxDragDistance;
+            }
+            else
+            {
+                rb.position = mousePosition;
+            }
         }
     }
 
