@@ -32,8 +32,6 @@ public class BalloonBehavior : MonoBehaviour {
         var shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
         rb.AddForce(shootDir * velocity);
-        InputManager.Instance.SendProjectileInfo();
-
         //StartCoroutine(AddDrag(velocity));
     }
 
@@ -62,8 +60,6 @@ public class BalloonBehavior : MonoBehaviour {
                 StopForce();
                 isVisible = false;
                 GetCollision();
-                InputManager.Instance.SendProjectileInfo();
-
             }
             else if(collision.tag == "Finish")
             {
@@ -71,7 +67,6 @@ public class BalloonBehavior : MonoBehaviour {
                 isVisible = false;
                 anim.Play("Explode");
                 DetectIfYouWon();
-                InputManager.Instance.SendProjectileInfo();
 
             }
         }
@@ -111,9 +106,15 @@ public class BalloonBehavior : MonoBehaviour {
             }
             else
             {
-                starsDetected = null;
-                star = null;
+                if (GameManager.Instance.currentNumBalloons <= 0)
+                    LevelManager.Instance.Lose();
+                InputManager.Instance.SendProjectileInfo();
             }
+            starsDetected = null;
+            star = null;
+
+
+
         }
     }
     private void StopForce()
