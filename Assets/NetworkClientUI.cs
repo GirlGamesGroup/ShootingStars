@@ -23,6 +23,12 @@ public class NetworkClientUI : MonoBehaviour {
     [SerializeField]
     GameObject proyectile;
 
+    [SerializeField]
+    GameObject proyectilesToGo;
+
+    [SerializeField]
+    GameObject gameOverButton;
+
     bool readyToShoot = false;
 
     void OnGUI()
@@ -33,6 +39,8 @@ public class NetworkClientUI : MonoBehaviour {
     void Start () {
         theClient = new NetworkClient();
         proyectile.SetActive(false);
+        proyectilesToGo.SetActive(false);
+        gameOverButton.SetActive(false);
 	}
 
     public void OnStartGame()
@@ -40,14 +48,28 @@ public class NetworkClientUI : MonoBehaviour {
         theClient.Connect(textFieldIp.text, 25000);
         theClient.RegisterHandler(SHOT_ENDED, OnShotEnded);
     }
-    	
-	// Update is called once per frame
-	void Update () {
+
+    public void OnResetGame()
+    {
+        connectButton.SetActive(false);
+        textIp.SetActive(false);
+        gameOverButton.SetActive(false);
+        proyectile.SetActive(true);
+        proyectile.GetComponent<RainbowProjectile>().ResetSlingshot();
+        proyectilesToGo.GetComponent<Text>().text = "x10";
+        proyectilesToGo.SetActive(true);
+        readyToShoot = true;
+    }
+
+    // Update is called once per frame
+    void Update () {
         if(theClient.isConnected && connectButton.activeInHierarchy)
         {
             connectButton.SetActive(false);
             textIp.SetActive(false);
             proyectile.SetActive(true);
+            proyectile.GetComponent<RainbowProjectile>().ResetSlingshot();
+            proyectilesToGo.SetActive(true);
             readyToShoot = true;
         }
         else if (!theClient.isConnected && !connectButton.activeInHierarchy)
@@ -55,6 +77,7 @@ public class NetworkClientUI : MonoBehaviour {
             connectButton.SetActive(true);
             textIp.SetActive(true);
             proyectile.SetActive(false);
+            proyectilesToGo.SetActive(false);
             readyToShoot = false;
         }
 
@@ -66,8 +89,19 @@ public class NetworkClientUI : MonoBehaviour {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         //string[] deltas = msg.value.Split('|');
-        Debug.Log(msg.value);
-        proyectile.GetComponent<RainbowProjectile>().ResetSlingshot();
+        if(float.Parse(msg.value) > 0)
+        {
+            Debug.Log(msg.value);
+            proyectilesToGo.GetComponent<Text>().text = "x" + msg.value;
+            proyectile.GetComponent<RainbowProjectile>().ResetSlingshot();
+        }
+        else
+        {
+            gameOverButton.SetActive(true);
+            proyectile.SetActive(false);
+            proyectilesToGo.SetActive(false);
+            readyToShoot = false;
+        }
     }
 
     static public void SendControllerInfo(Vector3 playersThrow)
