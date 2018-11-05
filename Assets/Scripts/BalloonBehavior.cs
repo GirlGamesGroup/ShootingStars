@@ -28,29 +28,18 @@ public class BalloonBehavior : MonoBehaviour {
     public void Shoot(float acceleration, float angle)
     {
         Debug.Log(acceleration + " : " + angle);
-        var velocity = acceleration;
-        var shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
+        Vector3 shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
-        rb.AddForce(shootDir * velocity);
+        rb.AddForce(shootDir * acceleration);
+        StartCoroutine(SlowDownVelocity());
         InputManager.Instance.SendProjectileInfo();
-
-        //StartCoroutine(AddDrag(velocity));
     }
 
-    IEnumerator AddDrag(float velocity)
+    IEnumerator SlowDownVelocity()
     {
-        float current_drag = 0;
-
-        while (current_drag < velocity/2)
-        {
-            current_drag += Time.deltaTime * (.15f * velocity);
-            rb.drag = current_drag;
-            yield return null;
-        }
-
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = 0;
-        rb.drag = 0;
+        yield return new WaitForSeconds(0.2f);
+        rb.velocity = rb.velocity * 0.25f;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
