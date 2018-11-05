@@ -32,6 +32,7 @@ public class BalloonBehavior : MonoBehaviour {
 
         rb.AddForce(shootDir * acceleration);
         StartCoroutine(SlowDownVelocity());
+    }
 
     IEnumerator SlowDownVelocity()
     {
