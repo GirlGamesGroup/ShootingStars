@@ -33,6 +33,8 @@ public class StarsBehavior : MonoBehaviour {
         sprite.color = color;
         anim.Play("HappyIdle");
         coll.enabled = false;
+        GameManager.Instance.score += 5;
+        LevelManager.Instance.txt_score.text = "Score: " + GameManager.Instance.score;
     }
 
     public void CombineStars()
