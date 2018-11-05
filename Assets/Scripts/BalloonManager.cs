@@ -12,29 +12,36 @@ public class BalloonManager : MonoBehaviour
     
     //Detect Input Here--------------
     private Vector3 temp;
+
     void Update()
     {
         if (!GameManager.Instance.isTransitioningToNextLevel)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (GameManager.Instance.currentNumBalloons > 0)
-                { 
-                    GameManager.Instance.currentNumBalloons--;
-                    currentBalloon.Shoot(2.0f, 105.0f);
-                    GetBalloon();
-
-                }
-                else
-                {
-                    Debug.Log("YOU DONT HAVE MORE BALLOONS");
-                    Destroy(gameObject);
-
-                }
+                //Shoot();
+                
             }
         }
     }
     //-----------------------------
+
+
+    public void Shoot(float acceleration, float angle)
+    {
+        if (GameManager.Instance.currentNumBalloons > 0)
+        {
+            GameManager.Instance.currentNumBalloons--;
+            currentBalloon.Shoot(acceleration, angle);
+            GetBalloon();
+        }
+        else
+        {
+            Debug.Log("YOU DONT HAVE MORE BALLOONS");
+            Destroy(gameObject);
+
+        }
+    }
 
     private void Awake()
     {
@@ -45,6 +52,7 @@ public class BalloonManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             CreatePoolObjects(GameManager.Instance.currentNumBalloons);
             GetBalloon();
+            InputManager.Instance.SendProjectileInfo();
         }
         else
         {

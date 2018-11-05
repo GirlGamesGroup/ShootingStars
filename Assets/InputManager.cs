@@ -9,7 +9,9 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour {
 
+    public static InputManager Instance;
     public const short SHOT_ENDED = 100;
+    private bool connected = false;
 
     bool isShooting = false;
 
@@ -33,6 +35,10 @@ public class InputManager : MonoBehaviour {
         playerIp = Network.player.ipAddress;
         whereTheIpGoes.text = playerIp;
     }
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Use this for initialization
     void Start () {
 
@@ -48,38 +54,47 @@ public class InputManager : MonoBehaviour {
     {
         theClient = client;
     }
-	
-    private void ServerReceiveMessage( NetworkMessage message)
+
+    private void ServerReceiveMessage(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
 
         string[] deltas = msg.value.Split('|');
-        float y = Convert.ToSingle(deltas[0]);
-        float x = Convert.ToSingle(deltas[1]);
-        float accelerationPhone = Convert.ToSingle(deltas[2]);
-        float anglePhone = Mathf.Atan(y / x);
+        float y = float.Parse(deltas[0]);
+        float x = float.Parse(deltas[1]);
+        float accelerationPhone = float.Parse(deltas[2]);
+        float anglePhone = Mathf.Rad2Deg * Mathf.Atan(y / x);
+        if (anglePhone < 0)
+        {
+            float dif = (90 + anglePhone);
+            anglePhone = Mathf.Abs(anglePhone) + dif ;
+        }
         //VAHorizontal.Update(accelerationPhone);
         //VAVertical.Update(anglePhone);
         Shoot(accelerationPhone, anglePhone);
     }
     // Update is called once per frame
     void Update () {
-
-	}
+        if (NetworkServer.connections.Count >1 && !connected)
+        {
+            connected = true;
+            GameManager.Instance.StartGame("Level");
+        }
+    }
 
     void Shoot(float acc, float angle)
     {
-        Debug.Log(acc + " - " + angle);
-        SendProjectileInfo(acc + " - " + angle);
+        BalloonManager.Instance.Shoot(acc,angle);
+        //SendProjectileInfo(acc + " - " + angle);
     }
 
-    static public void SendProjectileInfo(string message)
+     public void SendProjectileInfo()
     {
         if (NetworkServer.connections.Count > 0)
         {
             StringMessage msg = new StringMessage();
-            msg.value = message;
+            msg.value = GameManager.Instance.currentNumBalloons + "";
             NetworkServer.SendToClient(1, SHOT_ENDED, msg);
         }
     }

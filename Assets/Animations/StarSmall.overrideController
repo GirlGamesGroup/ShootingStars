@@ -5,10 +5,10 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: StarBig
+  m_Name: StarSmall
   m_Controller: {fileID: 9100000, guid: 8fe6c40980562724c8f2cdceaa4f867d, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: fde951ea03a55d24da6b1df29a0c48c2, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 5edf0c414bce7aa4a9ef8b228e2c29bc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d2838534458373d408b511229e658c0d, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 1481f22453715014cb65e1033cad7af9, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 78aaccbfe8f4ca942a21dc230f565f65, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5d7e5767af3f8c54fb45149dee58e3ca, type: 2}

@@ -27,10 +27,13 @@ public class BalloonBehavior : MonoBehaviour {
     //Range of velocity between [0|4] from device input
     public void Shoot(float acceleration, float angle)
     {
-        var velocity = acceleration * 100f;
+        Debug.Log(acceleration + " : " + angle);
+        var velocity = acceleration * 10f;
         var shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
         rb.AddForce(shootDir * velocity);
+        InputManager.Instance.SendProjectileInfo();
+
         //StartCoroutine(AddDrag(velocity));
     }
 
@@ -59,6 +62,8 @@ public class BalloonBehavior : MonoBehaviour {
                 StopForce();
                 isVisible = false;
                 GetCollision();
+                InputManager.Instance.SendProjectileInfo();
+
             }
             else if(collision.tag == "Finish")
             {
@@ -66,6 +71,8 @@ public class BalloonBehavior : MonoBehaviour {
                 isVisible = false;
                 anim.Play("Explode");
                 DetectIfYouWon();
+                InputManager.Instance.SendProjectileInfo();
+
             }
         }
     }
