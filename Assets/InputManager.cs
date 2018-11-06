@@ -93,6 +93,7 @@ public class InputManager : MonoBehaviour {
     {
         if (NetworkServer.connections.Count > 0)
         {
+            Debug.Log("Hablale al cliente");
             StringMessage msg = new StringMessage();
             msg.value = GameManager.Instance.currentNumBalloons + "";
             NetworkServer.SendToClient(1, SHOT_ENDED, msg);

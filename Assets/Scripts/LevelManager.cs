@@ -53,6 +53,7 @@ public class LevelManager : MonoBehaviour {
     {
         GameManager.Instance.isTransitioningToNextLevel = false;
         BalloonManager.Instance.currentBalloon.isVisible = true;
+        InputManager.Instance.SendProjectileInfo();
 
     }
 

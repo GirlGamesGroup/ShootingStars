@@ -27,7 +27,7 @@ public class BalloonBehavior : MonoBehaviour {
     //Range of velocity between [0|4] from device input
     public void Shoot(float acceleration, float angle)
     {
-        //Debug.Log(acceleration + " : " + angle);
+        Debug.Log(acceleration + " : " + angle);
         var velocity = acceleration;
         var shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
@@ -67,7 +67,6 @@ public class BalloonBehavior : MonoBehaviour {
                 isVisible = false;
                 anim.Play("Explode");
                 DetectIfYouWon();
-
             }
         }
     }
