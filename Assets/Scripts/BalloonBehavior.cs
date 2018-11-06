@@ -30,7 +30,7 @@ public class BalloonBehavior : MonoBehaviour {
         //Debug.Log(acceleration + " : " + angle);
         Vector3 shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
-        rb.AddForce(shootDir * acceleration);
+        rb.AddForce(shootDir * acceleration * 0.05f);
         StartCoroutine(SlowDownVelocity());
     }
 
