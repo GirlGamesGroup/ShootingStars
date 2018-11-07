@@ -19,7 +19,7 @@ public class BalloonManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //Shoot(100f, 105f);                
+                Shoot(3300f, 90f);                
             }
         }
     }
@@ -34,12 +34,12 @@ public class BalloonManager : MonoBehaviour
             {
                 GameManager.Instance.currentNumBalloons--;
                 currentBalloon.Shoot(acceleration, angle);
-                GetBalloon();
+                if (GameManager.Instance.currentNumBalloons > 0) GetBalloon();
             }
             else
             {
                 Debug.Log("YOU DONT HAVE MORE BALLOONS");
-                Destroy(gameObject);
+                gameObject.SetActive(false);
 
             }
         }
@@ -58,7 +58,7 @@ public class BalloonManager : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 

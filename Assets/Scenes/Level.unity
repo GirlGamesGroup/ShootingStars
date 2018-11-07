@@ -2361,14 +2361,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTransitioningToNextLevel: 0
   score: 0
-  currentNumBalloons: 10
+  currentNumBalloons: 5
   currentLevel: 0
   numStarsCompleted: 0
   levels:
   - numStarts: 5
-    numBalloon: 10
+    numBalloon: 5
   - numStarts: 6
-    numBalloon: 10
+    numBalloon: 5
   - numStarts: 5
     numBalloon: 5
   - numStarts: 5
@@ -8355,7 +8355,7 @@ MonoBehaviour:
   - {fileID: 954900201}
   txt_score: {fileID: 169868317}
   txt_highscore: {fileID: 197967783}
-  pnl_lose: {fileID: 0}
+  pnl_lose: {fileID: 116094132}
   txtLose_score: {fileID: 1796361466}
   txtLose_highscore: {fileID: 1523025658}
   pnl_win: {fileID: 184939498}
