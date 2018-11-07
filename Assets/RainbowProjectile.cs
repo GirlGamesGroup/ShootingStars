@@ -8,6 +8,8 @@ public class RainbowProjectile : MonoBehaviour {
 
     private float releaseDelay;
 
+    public float minDragDistance = 200;
+
     public float maxDragDistance;
 
     private Rigidbody2D attachedBody;
@@ -22,8 +24,15 @@ public class RainbowProjectile : MonoBehaviour {
 
     private float jointDistance;
 
+    private bool hasBeenShot;
+
+    SlingShotLine ssl;
+
+    Vector3 minimalPosition = new Vector3(218.9341f, 450f, 0);
+
     void Awake()
     {
+        hasBeenShot = false;
         rb = GetComponent<Rigidbody2D>();
         initialPosition = rb.position;
         sj = GetComponent<SpringJoint2D>();
@@ -35,9 +44,10 @@ public class RainbowProjectile : MonoBehaviour {
         initialPositions[0] = rb.position;
         initialPositions[1] = rb.position;
         lr.SetPositions(initialPositions);
+        ssl = FindObjectOfType<SlingShotLine>();
     }
     // Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if(isPressed)
         {
             DragBall();
@@ -51,6 +61,8 @@ public class RainbowProjectile : MonoBehaviour {
         float distance = Vector2.Distance(mousePosition, attachedBody.position);
         Vector3 trajectory = mousePosition - attachedBody.position;
         float anglePhone = Mathf.Rad2Deg * Mathf.Atan(trajectory.y / trajectory.x);
+
+        Debug.Log(mousePosition.y);
         if (anglePhone < 0)
         {
             float dif = (90 + anglePhone);
@@ -62,6 +74,10 @@ public class RainbowProjectile : MonoBehaviour {
             {
                 Vector2 direction = (mousePosition - attachedBody.position).normalized;
                 rb.position = attachedBody.position + direction * maxDragDistance;
+            }
+            else if (distance < minDragDistance || mousePosition.y > 350f)
+            {
+                rb.position = minimalPosition;
             }
             else
             {
@@ -80,21 +96,33 @@ public class RainbowProjectile : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        if (hasBeenShot)
+            return;
+
         isPressed = true;
         rb.isKinematic = true;
         lr.enabled = true;
+        rb.position = minimalPosition;
+        ssl.ResetLine();
+        ssl.Press();
     }
 
     private void OnMouseUp()
     {
+        if (hasBeenShot)
+            return;
+
         isPressed = false;
         rb.isKinematic = false;
         lr.enabled = false;
+        hasBeenShot = true;
         StartCoroutine(Release());
+        ssl.Dissapear();
     }
 
     public void ResetSlingshot()
     {
+        hasBeenShot = false;
         isPressed = false;
         sj.enabled = true;
         attachedBody = sj.connectedBody;
