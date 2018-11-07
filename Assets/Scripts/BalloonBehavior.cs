@@ -27,7 +27,7 @@ public class BalloonBehavior : MonoBehaviour {
     //Range of velocity between [0|4] from device input
     public void Shoot(float acceleration, float angle)
     {
-        //Debug.Log(acceleration + " : " + angle);
+        Debug.Log(acceleration + " : " + angle);
         Vector3 shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
 
         rb.AddForce(shootDir * acceleration * 0.05f);
@@ -37,8 +37,15 @@ public class BalloonBehavior : MonoBehaviour {
     IEnumerator SlowDownVelocity()
     {
         yield return new WaitForSeconds(0.2f);
-        rb.velocity = rb.velocity * 0.25f;
-        
+        rb.velocity = rb.velocity * 0.15f;
+        //if (rb.velocity.y <= 0.7f)
+        //{
+        //    StopForce();
+        //    isVisible = false;
+        //    GetTriggerCollision();
+        //}
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,7 +58,8 @@ public class BalloonBehavior : MonoBehaviour {
                 isVisible = false;
                 GetCollision();
             }
-            else if(collision.tag == "Finish")
+            else
+            if (collision.tag == "Finish")
             {
                 StopForce();
                 isVisible = false;
@@ -59,6 +67,30 @@ public class BalloonBehavior : MonoBehaviour {
                 DetectIfYouWon();
             }
         }
+    }
+
+    public void GetTriggerCollision()
+    {
+        bool collidedWithAStar = false;
+        starsDetected = Physics2D.OverlapCircleAll(transform.position, collisionRadius);
+        for (int i = 0; i < starsDetected.Length; i++)
+        {
+            star = starsDetected[i].GetComponent<StarsBehavior>();
+            if (star != null)
+            {
+                collidedWithAStar = true;
+                rainbowColorID = Random.Range(0, GameManager.Instance.rainbowColor.Length);
+                star.ChangeColor(GameManager.Instance.rainbowColor[rainbowColorID]);
+                GameManager.Instance.numStarsCompleted++;
+                anim.Play("Explode");
+            }
+        }
+        if (!collidedWithAStar && isVisible)
+        {
+            anim.Play("Explode");
+
+        }
+        DetectIfYouWon();
     }
 
 
@@ -69,6 +101,7 @@ public class BalloonBehavior : MonoBehaviour {
 
         //Change color of stars
         starsDetected = Physics2D.OverlapCircleAll(transform.position, collisionRadius);
+
         for (int i = 0; i < starsDetected.Length; i++)
         {
             star = starsDetected[i].GetComponent<StarsBehavior>();
