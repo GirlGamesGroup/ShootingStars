@@ -9,6 +9,8 @@ public class NetworkClientUI : MonoBehaviour {
 
     public const short SHOT_ENDED = 100;
 
+    public const short RECEIVE_SCORES = 200;
+
     static NetworkClient theClient;
 
     [SerializeField]
@@ -29,24 +31,35 @@ public class NetworkClientUI : MonoBehaviour {
     [SerializeField]
     GameObject gameOverButton;
 
+    [SerializeField]
+    GameObject youWinButton;
+
+    [SerializeField]
+    Text playerScore;
+
+    [SerializeField]
+    Text highScore;
+
     bool readyToShoot = false;
 
     void OnGUI()
     {
         //string ipAdress = Network.player.ipAddress;
     }
-    // Use this for initialization
+
     void Start () {
         theClient = new NetworkClient();
         proyectile.SetActive(false);
         proyectilesToGo.SetActive(false);
         gameOverButton.SetActive(false);
-	}
+        youWinButton.SetActive(false);
+    }
 
     public void OnStartGame()
     {
         theClient.Connect(textFieldIp.text, 25000);
         theClient.RegisterHandler(SHOT_ENDED, OnShotEnded);
+        theClient.RegisterHandler(RECEIVE_SCORES, OnReceiveScores);
     }
 
     public void OnResetGame()
@@ -54,6 +67,7 @@ public class NetworkClientUI : MonoBehaviour {
         connectButton.SetActive(false);
         textIp.SetActive(false);
         gameOverButton.SetActive(false);
+        youWinButton.SetActive(false);
         proyectile.SetActive(true);
         proyectile.GetComponent<RainbowProjectile>().ResetSlingshot();
         proyectilesToGo.GetComponent<Text>().text = "x10";
@@ -89,19 +103,34 @@ public class NetworkClientUI : MonoBehaviour {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         //string[] deltas = msg.value.Split('|');
-        if(float.Parse(msg.value) > 0)
-        {
-            Debug.Log(msg.value);
-            proyectilesToGo.GetComponent<Text>().text = "x" + msg.value;
-            proyectile.GetComponent<RainbowProjectile>().ResetSlingshot();
-        }
-        else
+        if (int.Parse(msg.value) == 0)
         {
             gameOverButton.SetActive(true);
             proyectile.SetActive(false);
             proyectilesToGo.SetActive(false);
             readyToShoot = false;
         }
+        else if (int.Parse(msg.value) == 12)
+        {
+            youWinButton.SetActive(true);
+            proyectile.SetActive(false);
+            proyectilesToGo.SetActive(false);
+            readyToShoot = false;
+        }
+        else
+        {
+            proyectilesToGo.GetComponent<Text>().text = "x" + msg.value;
+            proyectile.GetComponent<RainbowProjectile>().ResetSlingshot();
+        }
+    }
+
+    private void OnReceiveScores(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+        string[] scores = msg.value.Split('-');
+        playerScore.text = "Score: " + scores[0];
+        highScore.text = "High Score: " + scores[1];
     }
 
     static public void SendControllerInfo(Vector3 playersThrow)
