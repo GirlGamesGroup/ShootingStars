@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour {
 
     public static InputManager Instance;
     public const short SHOT_ENDED = 100;
+    public const short RECEIVE_SCORE = 200;
     private bool connected = false;
 
     bool isShooting = false;
@@ -89,7 +90,7 @@ public class InputManager : MonoBehaviour {
         //SendProjectileInfo(acc + " - " + angle);
     }
 
-     public void SendProjectileInfo(string message)
+    public void SendProjectileInfo(string message)
     {
         if (NetworkServer.connections.Count > 0)
         {
@@ -97,6 +98,16 @@ public class InputManager : MonoBehaviour {
             StringMessage msg = new StringMessage();
             msg.value = message;
             NetworkServer.SendToClient(1, SHOT_ENDED, msg);
+        }
+    }
+
+    public void SendScores(float score, float highscore)
+    {
+        if (NetworkServer.connections.Count > 0)
+        {
+            StringMessage msg = new StringMessage();
+            msg.value = score + "-" + highscore;
+            NetworkServer.SendToClient(1, RECEIVE_SCORE, msg);
         }
     }
 }
