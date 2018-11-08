@@ -57,7 +57,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isVisible: 0
-  collisionRadius: 0.2
+  collisionRadius: 0.17
 --- !u!212 &212825087995625992
 SpriteRenderer:
   m_ObjectHideFlags: 1
