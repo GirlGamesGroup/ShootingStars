@@ -74,6 +74,7 @@ public class NetworkClientUI : MonoBehaviour {
         proyectilesToGo.GetComponent<Text>().text = "x10";
         proyectilesToGo.SetActive(true);
         readyToShoot = true;
+        OnRetry();
     }
 
     public void OnRetry()

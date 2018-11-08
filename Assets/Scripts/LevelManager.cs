@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour {
     private void Awake()
     {
         Instance = this;
-        if (PlayerPrefs.HasKey("HighScore"))
+        if (!PlayerPrefs.HasKey("HighScore"))
         {
             Debug.Log("asdf");
             PlayerPrefs.SetInt("HighScore", 0);

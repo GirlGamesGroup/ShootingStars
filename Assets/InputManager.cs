@@ -83,6 +83,8 @@ public class InputManager : MonoBehaviour {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         //TODO: Haz lo que tengas que hacer para reiniciar la escena :v
+        GameManager.Instance.StartGame("Level");
+
     }
     // Update is called once per frame
     void Update () {

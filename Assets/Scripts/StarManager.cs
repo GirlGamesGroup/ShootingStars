@@ -51,6 +51,8 @@ public class StarManager : MonoBehaviour {
             }
             isLevelCompleted = true;
         }
+        GameManager.Instance.score += GameManager.Instance.currentNumBalloons * 5;
+        InputManager.Instance.SendScores(GameManager.Instance.score, PlayerPrefs.GetInt("HighScore"));
         yield return new WaitForSeconds(0.2f);
         LevelManager.Instance.GoToNextLevel();
     }

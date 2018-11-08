@@ -2419,7 +2419,7 @@ MonoBehaviour:
     numBalloon: 10
   - numStarts: 8
     numBalloon: 10
-  - numStarts: 12
+  - numStarts: 11
     numBalloon: 10
   rainbowColor:
   - {r: 0.12164793, g: 0.9191176, b: 0.12164793, a: 1}
