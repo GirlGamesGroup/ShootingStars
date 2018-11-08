@@ -49,7 +49,8 @@ public class InputManager : MonoBehaviour {
         CrossPlatformInputManager.RegisterVirtualAxis(VAVertical);
         NetworkServer.Listen(25000);
         NetworkServer.RegisterHandler(888, ServerReceiveMessage);
-	}
+        NetworkServer.RegisterHandler(999, ServerReceiveRetry);
+    }
 
     void Init(NetworkClient client)
     {
@@ -74,6 +75,14 @@ public class InputManager : MonoBehaviour {
         //VAHorizontal.Update(accelerationPhone);
         //VAVertical.Update(anglePhone);
         Shoot(accelerationPhone, anglePhone);
+    }
+
+    private void ServerReceiveRetry(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        //TODO: Haz lo que tengas que hacer para reiniciar la escena :v
     }
     // Update is called once per frame
     void Update () {
