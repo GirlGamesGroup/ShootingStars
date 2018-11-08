@@ -30,31 +30,38 @@ public class BalloonBehavior : MonoBehaviour {
         Debug.Log(acceleration + " : " + angle);
         rb.isKinematic = false;
         Vector3 shootDir = Quaternion.Euler(0, 0, angle ) * Vector3.right;
-        Debug.Log(rb.velocity);
-        rb.AddForce(shootDir * acceleration * 0.05f);
-        Debug.Log(rb.velocity);
-        StartCoroutine(SlowDownVelocity());
+        rb.AddForce(shootDir * acceleration * 0.025f);
+        StartCoroutine(SlowDownVelocity(acceleration*0.002f,angle));
     }
 
-    IEnumerator SlowDownVelocity()
+    IEnumerator SlowDownVelocity(float Vo,float angle)
     {
         yield return new WaitForSeconds(0.2f);
-        rb.velocity = rb.velocity * 0.15f;
+        rb.velocity = rb.velocity * 0.35f;
 
-        //while (rb.velocity.magnitude <= 0f)
+        //float time = 0f;
+        //float velO = Vo;
+        //Vector3 velF = rb.velocity;
+        //yield return new WaitForSeconds(0.001f);
+        //velF.y = (float)(velO * Mathf.Sin(angle) - (9.8) * time);
+        //time += Time.deltaTime;
+        //rb.velocity = velF;
+
+        //while (rb.velocity.y > 0f)
         //{
+        //    Debug.Log(rb.velocity);
+
         //    yield return new WaitForSeconds(0.001f);
-        //    rb.velocity = rb.velocity * 0.25f;
+        //    velF.y = (float)(velO * Mathf.Sin(angle) - (9.8) * time);
+        //    time += Time.deltaTime;
+        //    rb.velocity = velF;
         //    Debug.Log(rb.velocity.magnitude);
         //}
         //Debug.Log("END:" + rb.velocity.magnitude);
 
-        //if (rb.velocity.y <= 0.7f)
-        //{
+
         //    StopForce();
-        //    isVisible = false;
         //    GetTriggerCollision();
-        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -99,6 +106,8 @@ public class BalloonBehavior : MonoBehaviour {
             anim.Play("Explode");
 
         }
+
+        isVisible = false;
         DetectIfYouWon();
     }
 
