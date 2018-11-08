@@ -50,6 +50,7 @@ public class InputManager : MonoBehaviour {
         NetworkServer.Listen(25000);
         NetworkServer.RegisterHandler(888, ServerReceiveMessage);
         NetworkServer.RegisterHandler(999, ServerReceiveRetry);
+        NetworkServer.RegisterHandler(777, ServerShowMenu);
     }
 
     void Init(NetworkClient client)
@@ -85,6 +86,16 @@ public class InputManager : MonoBehaviour {
         //TODO: Haz lo que tengas que hacer para reiniciar la escena :v
         GameManager.Instance.StartGame("Menu");
         Debug.Log("Yo motherfucker >:v");
+
+    }
+
+    private void ServerShowMenu(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        //TODO: Haz lo que tengas que hacer para mostrar el menu :v D: D: D:
+
 
     }
     // Update is called once per frame

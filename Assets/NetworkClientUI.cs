@@ -35,6 +35,9 @@ public class NetworkClientUI : MonoBehaviour {
     GameObject youWinButton;
 
     [SerializeField]
+    GameObject lobbyButton;
+
+    [SerializeField]
     Text playerScore;
 
     [SerializeField]
@@ -53,6 +56,7 @@ public class NetworkClientUI : MonoBehaviour {
         proyectilesToGo.SetActive(false);
         gameOverButton.SetActive(false);
         youWinButton.SetActive(false);
+        lobbyButton.SetActive(false);
     }
 
     public void OnStartGame()
@@ -69,12 +73,28 @@ public class NetworkClientUI : MonoBehaviour {
         textIp.SetActive(false);
         gameOverButton.SetActive(false);
         youWinButton.SetActive(false);
+        lobbyButton.SetActive(false);
         proyectile.SetActive(true);
         proyectile.GetComponent<RainbowProjectile>().ResetSlingshot();
         proyectilesToGo.GetComponent<Text>().text = "x10";
         proyectilesToGo.SetActive(true);
         readyToShoot = true;
         OnRetry();
+    }
+
+    public void OnEnterLobby()
+    {
+        connectButton.SetActive(false);
+        textIp.SetActive(false);
+        gameOverButton.SetActive(false);
+        youWinButton.SetActive(false);
+        lobbyButton.SetActive(true);
+        if (theClient.isConnected)
+        {
+            StringMessage msg = new StringMessage();
+            msg.value = "Pinche sol maría x2";
+            theClient.Send(777, msg);
+        }
     }
 
     public void OnRetry()

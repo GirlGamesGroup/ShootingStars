@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ScreenLimit : MonoBehaviour {
 
+    RainbowProjectile rp;
 	// Use this for initialization
 	void Start () {
-		
+        rp = FindObjectOfType<RainbowProjectile>();
 	}
 	
 	// Update is called once per frame
@@ -16,8 +17,11 @@ public class ScreenLimit : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Pasa por el collider");
         Vector2 direction = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
         NetworkClientUI.SendControllerInfo(direction);
+        if(rp != null)
+        {
+            rp.Hide();
+        }
     }
 }
