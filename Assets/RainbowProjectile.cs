@@ -12,6 +12,8 @@ public class RainbowProjectile : MonoBehaviour {
 
     public float maxDragDistance;
 
+    private SpriteRenderer sp;
+
     private Rigidbody2D attachedBody;
 
     private Rigidbody2D rb;
@@ -33,6 +35,7 @@ public class RainbowProjectile : MonoBehaviour {
     void Awake()
     {
         hasBeenShot = false;
+        sp = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         initialPosition = rb.position;
         sj = GetComponent<SpringJoint2D>();
@@ -62,7 +65,6 @@ public class RainbowProjectile : MonoBehaviour {
         Vector3 trajectory = mousePosition - attachedBody.position;
         float anglePhone = Mathf.Rad2Deg * Mathf.Atan(trajectory.y / trajectory.x);
 
-        Debug.Log(mousePosition.y);
         if (anglePhone < 0)
         {
             float dif = (90 + anglePhone);
@@ -136,7 +138,17 @@ public class RainbowProjectile : MonoBehaviour {
         initialPositions[0] = rb.position;
         initialPositions[1] = rb.position;
         lr.SetPositions(initialPositions);
+        sp.enabled = true;
 
+    }
+
+    public void Hide()
+    {
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0;
+        rb.position = initialPosition;
+        sp.enabled = false;
     }
 
     private IEnumerator Release()
