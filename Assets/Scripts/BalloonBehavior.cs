@@ -37,7 +37,7 @@ public class BalloonBehavior : MonoBehaviour {
     IEnumerator SlowDownVelocity(float Vo,float angle)
     {
         yield return new WaitForSeconds(0.2f);
-        rb.velocity = rb.velocity * 0.35f;
+        rb.velocity = rb.velocity * 0.5f;
 
         //float time = 0f;
         //float velO = Vo;
