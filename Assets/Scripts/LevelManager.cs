@@ -67,6 +67,8 @@ public class LevelManager : MonoBehaviour {
         //txt_score.text = "";
         //txtLose_score.text = "Score: " + GameManager.Instance.score;
         //txtLose_highscore.text = "Highscore: " + PlayerPrefs.GetInt("HighScore");
+        InputManager.Instance.SendProjectileInfo(0 + "");
+        InputManager.Instance.SendScores(GameManager.Instance.score, PlayerPrefs.GetInt("HighScore"));
         pnl_lose.SetActive(true);
     }
 
@@ -82,6 +84,6 @@ public class LevelManager : MonoBehaviour {
         //txtWin_highscore.text = "Highscore: " +PlayerPrefs.GetInt("HighScore");
         pnl_win.SetActive(true);
         InputManager.Instance.SendProjectileInfo(12 + "");
-
+        InputManager.Instance.SendScores(GameManager.Instance.score, PlayerPrefs.GetInt("HighScore"));
     }
 }
