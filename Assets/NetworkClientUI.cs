@@ -44,7 +44,7 @@ public class NetworkClientUI : MonoBehaviour {
 
     void OnGUI()
     {
-        //string ipAdress = Network.player.ipAddress;
+        string ipAdress = Network.player.ipAddress;
     }
 
     void Start () {
@@ -60,6 +60,7 @@ public class NetworkClientUI : MonoBehaviour {
         theClient.Connect(textFieldIp.text, 25000);
         theClient.RegisterHandler(SHOT_ENDED, OnShotEnded);
         theClient.RegisterHandler(RECEIVE_SCORES, OnReceiveScores);
+
     }
 
     public void OnResetGame()
@@ -73,6 +74,16 @@ public class NetworkClientUI : MonoBehaviour {
         proyectilesToGo.GetComponent<Text>().text = "x10";
         proyectilesToGo.SetActive(true);
         readyToShoot = true;
+    }
+
+    public void OnRetry()
+    {
+        if (theClient.isConnected)
+        {
+            StringMessage msg = new StringMessage();
+            msg.value = "Pinche sol maría";
+            theClient.Send(999, msg);
+        }
     }
 
     // Update is called once per frame
