@@ -90,13 +90,13 @@ public class InputManager : MonoBehaviour {
         //SendProjectileInfo(acc + " - " + angle);
     }
 
-    public void SendProjectileInfo()
+    public void SendProjectileInfo(string message)
     {
         if (NetworkServer.connections.Count > 0)
         {
             Debug.Log("Hablale al cliente");
             StringMessage msg = new StringMessage();
-            msg.value = GameManager.Instance.currentNumBalloons + "";
+            msg.value = message;
             NetworkServer.SendToClient(1, SHOT_ENDED, msg);
         }
     }

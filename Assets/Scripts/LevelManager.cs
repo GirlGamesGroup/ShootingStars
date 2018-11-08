@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour {
     {
         GameManager.Instance.isTransitioningToNextLevel = false;
         BalloonManager.Instance.currentBalloon.isVisible = true;
-        InputManager.Instance.SendProjectileInfo();
+        InputManager.Instance.SendProjectileInfo(GameManager.Instance.currentNumBalloons + "");
 
     }
 
@@ -63,10 +63,10 @@ public class LevelManager : MonoBehaviour {
         {
             PlayerPrefs.SetInt("HighScore", GameManager.Instance.score);
         }
-        txt_highscore.text = "";
-        txt_score.text = "";
-        txtLose_score.text = "Score: " + GameManager.Instance.score;
-        txtLose_highscore.text = "Highscore: " + PlayerPrefs.GetInt("HighScore");
+        //txt_highscore.text = "";
+        //txt_score.text = "";
+        //txtLose_score.text = "Score: " + GameManager.Instance.score;
+        //txtLose_highscore.text = "Highscore: " + PlayerPrefs.GetInt("HighScore");
         pnl_lose.SetActive(true);
     }
 
@@ -76,11 +76,12 @@ public class LevelManager : MonoBehaviour {
         {
             PlayerPrefs.SetInt("HighScore", GameManager.Instance.score);
         }
-        txt_highscore.text = "";
-        txt_score.text = "";
-        txtWin_score.text = "Score: "+ GameManager.Instance.score;
-        txtWin_highscore.text = "Highscore: " +PlayerPrefs.GetInt("HighScore");
+        //txt_highscore.text = "";
+        //txt_score.text = "";
+        //txtWin_score.text = "Score: "+ GameManager.Instance.score;
+        //txtWin_highscore.text = "Highscore: " +PlayerPrefs.GetInt("HighScore");
         pnl_win.SetActive(true);
+        InputManager.Instance.SendProjectileInfo(12 + "");
 
     }
 }

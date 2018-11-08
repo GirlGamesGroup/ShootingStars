@@ -28,9 +28,11 @@ public class BalloonBehavior : MonoBehaviour {
     public void Shoot(float acceleration, float angle)
     {
         Debug.Log(acceleration + " : " + angle);
-        Vector3 shootDir = Quaternion.Euler(0, 0, angle) * Vector3.right;
-
+        rb.isKinematic = false;
+        Vector3 shootDir = Quaternion.Euler(0, 0, angle ) * Vector3.right;
+        Debug.Log(rb.velocity);
         rb.AddForce(shootDir * acceleration * 0.05f);
+        Debug.Log(rb.velocity);
         StartCoroutine(SlowDownVelocity());
     }
 
@@ -38,14 +40,21 @@ public class BalloonBehavior : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.2f);
         rb.velocity = rb.velocity * 0.15f;
+
+        //while (rb.velocity.magnitude <= 0f)
+        //{
+        //    yield return new WaitForSeconds(0.001f);
+        //    rb.velocity = rb.velocity * 0.25f;
+        //    Debug.Log(rb.velocity.magnitude);
+        //}
+        //Debug.Log("END:" + rb.velocity.magnitude);
+
         //if (rb.velocity.y <= 0.7f)
         //{
         //    StopForce();
         //    isVisible = false;
         //    GetTriggerCollision();
         //}
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -130,7 +139,7 @@ public class BalloonBehavior : MonoBehaviour {
             {
                 if (GameManager.Instance.currentNumBalloons <= 0)
                     LevelManager.Instance.Lose();
-                InputManager.Instance.SendProjectileInfo();
+                InputManager.Instance.SendProjectileInfo(GameManager.Instance.currentNumBalloons + "");
             }
             starsDetected = null;
             star = null;
