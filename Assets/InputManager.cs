@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,7 +84,7 @@ public class InputManager : MonoBehaviour {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         //TODO: Haz lo que tengas que hacer para reiniciar la escena :v
-        GameManager.Instance.StartGame("Menu");
+        GameManager.Instance.StartGame("Level");
         Debug.Log("Yo motherfucker >:v");
 
     }
@@ -95,7 +95,7 @@ public class InputManager : MonoBehaviour {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         //TODO: Haz lo que tengas que hacer para mostrar el menu :v D: D: D:
-
+        GameManager.Instance.ResetGame("Menu");
 
     }
     // Update is called once per frame

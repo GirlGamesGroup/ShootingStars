@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,9 +51,9 @@ public class BalloonManager : MonoBehaviour
         {
             Instance = this;
             list = new List<GameObject>();
-            DontDestroyOnLoad(this.gameObject);
             CreatePoolObjects(GameManager.Instance.currentNumBalloons);
             GetBalloon();
+            Debug.Log("BALOOOOONS");
             if(InputManager.Instance != null) InputManager.Instance.SendProjectileInfo(GameManager.Instance.currentNumBalloons + "");
         }
         else

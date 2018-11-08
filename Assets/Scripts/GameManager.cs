@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,9 +65,11 @@ public class GameManager : MonoBehaviour {
     public void ResetGame(string goToMenuScene)
     {
         currentLevel = 0;
+        numStarsCompleted = 0;
         currentNumBalloons = levels[currentLevel].numBalloon;
         score = 0;
         isTransitioningToNextLevel = false;
+        InputManager.Instance.SendScores(score,PlayerPrefs.GetInt("HighScore"));
         SceneManager.LoadScene(goToMenuScene);
     }
 
