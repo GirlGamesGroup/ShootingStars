@@ -2421,6 +2421,8 @@ MonoBehaviour:
     numBalloon: 10
   - numStarts: 11
     numBalloon: 10
+  sceneMenu: Menu
+  sceneLevel: Level
   rainbowColor:
   - {r: 0.12164793, g: 0.9191176, b: 0.12164793, a: 1}
   - {r: 0, g: 1, b: 0.83448267, a: 1}

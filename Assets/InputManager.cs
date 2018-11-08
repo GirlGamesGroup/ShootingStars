@@ -84,7 +84,7 @@ public class InputManager : MonoBehaviour {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         //TODO: Haz lo que tengas que hacer para reiniciar la escena :v
-        GameManager.Instance.StartGame("Level");
+        GameManager.Instance.StartGame(GameManager.Instance.sceneLevel);
         Debug.Log("Yo motherfucker >:v");
 
     }
@@ -95,15 +95,15 @@ public class InputManager : MonoBehaviour {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         //TODO: Haz lo que tengas que hacer para mostrar el menu :v D: D: D:
-        GameManager.Instance.ResetGame("Menu");
-
+        GameManager.Instance.ResetGame();
+        Debug.Log("Yo motherfucker >:v x2");
     }
     // Update is called once per frame
     void Update () {
         if (NetworkServer.connections.Count >1 && !connected)
         {
             connected = true;
-            GameManager.Instance.StartGame("Level");
+            GameManager.Instance.StartGame(GameManager.Instance.sceneLevel);
         }
     }
 
